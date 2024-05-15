@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "SVNGilroyLight";
+  src: url("../font/svn/SVNGilroyLight.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SVNGilroyBold";
+  src: url("../font/svn/SVNGilroyBold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SFProTextBlack";
+  src: url("@/assets/font/sf/SF-Pro-Text-Black.otf") format("opentype");
+  font-weight: bolder;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SFProTextBold";
+  src: url("@/assets/font/sf/SF-Pro-Text-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SFProTextMedium";
+  src: url("@/assets/font/sf/SF-Pro-Text-Medium.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SFProTextReguler";
+  src: url("@/assets/font/sf/SF-Pro-Text-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SFProTextSemiBold";
+  src: url("@/assets/font/sf/SF-Pro-Text-Semibold.otf") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+$SVN-Gilroy-Light: "SVNGilroyLight", sans-serif;
+$SVN-Gilroy-Bold: "SVNGilroyBold", sans-serif;
+$SF-Pro-Text-Black: "SFProTextBlack", sans-serif;
+$SF-Pro-Text-Bold: "SFProTextBold", sans-serif;
+$SF-Pro-Text-Medium: "SFProTextMedium", sans-serif;
+$SF-Pro-Text-Reguler: "SFProTextReguler", sans-serif;
+$SF-Pro-Text-SemiBold: "SFProTextSemiBold", sans-serif;
