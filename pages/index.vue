@@ -164,6 +164,8 @@ const blogs = ref(Blogs);
       </li>
     </ul>
   </section>
+
+  <Footer></Footer>
 </template>
 
 <style lang="scss">

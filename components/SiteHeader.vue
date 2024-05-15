@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { items } = useCart();
 </script>
 <template>
   <div class="top">
@@ -30,7 +29,7 @@ const { items } = useCart();
               <NuxtLink to="/">About</NuxtLink>
             </li>
             <li class="site-nav__item">
-              <NuxtLink to="/products">Contact</NuxtLink>
+              <NuxtLink to="/">Contact</NuxtLink>
             </li>
           </ul>
         </nav>
