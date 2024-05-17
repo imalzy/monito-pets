@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps({
   product: {
-    type: Object as PropType<Product>,
+    type: Object as PropType<any>,
     required: true,
   },
   promo: {
@@ -76,7 +76,7 @@ defineProps({
       height: 100%;
     }
   }
-
+ 
   &__content {
     display: flex;
     align-items: flex-start;

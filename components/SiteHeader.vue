@@ -2,9 +2,6 @@
 </script>
 <template>
   <div class="top">
-    <div class="il-01">
-      <img src="@/assets/img/react.svg" alt="react" />
-    </div>
     <header class="site-header">
       <div class="site-header__menus">
         <NuxtLink to="/">
@@ -120,11 +117,16 @@
   background-repeat: no-repeat;
 }
 
-.il-01 {
-  position: absolute;
-  top: -41rem;
-  left: -23rem;
-  z-index: 0;
+header.site-header::before {
+  content: "";
+    position: absolute;
+    width: 123%;
+    height: 165%;
+    top: 0px;
+    left: -92%;
+    z-index: -1;
+    background: url("/_nuxt/assets/img/react.svg") 0 0 no-repeat;
+    transform: rotate(176deg);
 }
 
 .site-header {
