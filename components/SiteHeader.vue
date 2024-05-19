@@ -1,6 +1,60 @@
 <script setup lang="ts">
+const toggle = ref<boolean>(false);
 </script>
 <template>
+  <aside class="sidebar" :class="toggle ? 'sidebar__show' : 'sidebar__hide'">
+    <div class="sidebar__head">
+      <NuxtLink to="/">
+        <div class="sidebar__head__logo">
+          <img src="@/assets/img/logo.svg" alt="logo" />
+        </div>
+      </NuxtLink>
+      <label for="toggle" class="exit">X</label>
+    </div>
+    <div class="sidebar__menu">
+      <nav class="sidebar__menu__nav">
+        <ul class="sidebar__menu__nav__list">
+          <li class="sidebar__menu__nav__item">
+            <NuxtLink to="/">Home</NuxtLink>
+          </li>
+          <li class="sidebar__menu__nav__item">
+            <NuxtLink to="/">Category</NuxtLink>
+          </li>
+          <li class="sidebar__menu__nav__item">
+            <NuxtLink to="/">About</NuxtLink>
+          </li>
+          <li class="sidebar__menu__nav__item">
+            <NuxtLink to="/">Contact</NuxtLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="sidebar__action">
+      <div class="sidebar__action__search">
+        <NuxtImg
+          provider="assetsProvider"
+          src="/search.svg"
+          class="sidebar__action__search__icon"
+        />
+        <input
+          type="text"
+          placeholder="Search something here!"
+          class="sidebar__action__search--input"
+        />
+      </div>
+
+      <NuxtLink class="sidebar__action__join"></NuxtLink>
+
+      <div class="sidebar__action__lang">
+        <div class="lang-label">
+          <img src="@/assets/img/vnd.svg" alt="vietnam" />
+          <span class="lang-label__text">VND</span>
+        </div>
+        <img src="@/assets/img/chevron-up.svg" alt="chevron" />
+      </div>
+    </div>
+  </aside>
   <div class="top">
     <header class="site-header">
       <div class="site-header__menus">
@@ -45,9 +99,7 @@
           />
         </div>
 
-        <NuxtLink class="site-header__actions__join"
-          >Join the community</NuxtLink
-        >
+        <NuxtLink class="site-header__actions__join"></NuxtLink>
 
         <div class="site-header__actions__lang">
           <div class="lang-label">
@@ -56,6 +108,21 @@
           </div>
           <img src="@/assets/img/chevron-up.svg" alt="chevron" />
         </div>
+      </div>
+    </header>
+
+    <header class="site-xs-header">
+      <input id="toggle" type="checkbox" v-model="toggle" hidden />
+      <label for="toggle" style="cursor: pointer">
+        <div class="site-xs-header__menu">
+          <img src="@/assets/img/menu.svg" alt="menu" />
+        </div>
+      </label>
+      <div class="site-xs-header__logo">
+        <img src="@/assets/img/logo.svg" alt="logo" />
+      </div>
+      <div class="site-xs-header__search">
+        <img src="@/assets/img/search-menu.svg" alt="search-menu" />
       </div>
     </header>
 
@@ -103,6 +170,7 @@
 <style lang="scss">
 @import "@/assets/scss/_colors.scss";
 @import "@/assets/scss/_fonts.scss";
+@import "@/assets/scss/_media_when_min_width";
 
 .top {
   background: linear-gradient(
@@ -112,21 +180,162 @@
     #ffe7ba 100%
   );
   border-radius: 0 0 40px 40px;
-  min-height: 695px;
+  height: 695px;
   position: relative;
   background-repeat: no-repeat;
+  padding: 0 24px;
+
+  @include when-min-width(xs) {
+    height: 794px;
+  }
+  @include when-min-width(lg) {
+    height: 695px;
+  }
+}
+
+.sidebar {
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  z-index: 2;
+  transition: top 0.5s ease-in-out;
+  padding: 16px 24px;
+
+  background: #fff;
+  outline: none;
+  border: none;
+  box-shadow: none;
+
+  &__show {
+    top: 0%;
+  }
+
+  &__hide {
+    top: -100%;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__menu {
+    &__nav {
+      &__list {
+        list-style: none;
+      }
+
+      &__item {
+        padding: 16px 5px;
+        font-size: 16px;
+        border-bottom: 1px solid $mon-yellow-80;
+        color: $dark-blue !important;
+
+        &:hover {
+          background: $mon-yellow-80;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__action {
+    margin-top: 24px;
+
+    &__search {
+      display: flex;
+      background: transparent;
+      padding: 10px;
+      border: 1px solid #f7dba7;
+      align-items: center;
+
+      &--input {
+        font-size: 16px;
+        padding: 10px;
+        width: 90%;
+        border: none;
+        outline: none;
+      }
+
+      img {
+        width: 24px;
+      }
+    }
+
+    &__lang {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+
+      .lang-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          width: 16px;
+        }
+
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
 }
 
 header.site-header::before {
   content: "";
-    position: absolute;
-    width: 123%;
-    height: 165%;
-    top: 0px;
-    left: -92%;
-    z-index: -1;
-    background: url("/_nuxt/assets/img/react.svg") 0 0 no-repeat;
-    transform: rotate(176deg);
+  position: absolute;
+  width: 123%;
+  height: 165%;
+  top: 0px;
+  left: -92%;
+  z-index: -1;
+  background: url("/_nuxt/assets/img/react.svg") 0 0 no-repeat;
+  transform: rotate(176deg);
+}
+
+.site-xs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-height: 100px;
+  position: sticky;
+  padding: 16px 8px;
+  margin: 0 auto;
+
+  @include when-min-width(xs) {
+    display: flex;
+    visibility: unset;
+  }
+
+  @include when-min-width(lg) {
+    display: none;
+    visibility: hidden;
+  }
+
+  &__menu {
+    width: 33px;
+    img {
+      width: 100%;
+    }
+  }
+  &__logo {
+    width: 92px;
+    img {
+      width: 100%;
+    }
+  }
+  &__search {
+    width: 23px;
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .site-header {
@@ -138,9 +347,19 @@ header.site-header::before {
 
   max-height: 100px;
   position: sticky;
-  padding: 28px 80px;
+  padding: 28px 0px;
   max-width: 1440px;
   margin: 0 auto;
+
+  @include when-min-width(xs) {
+    display: none;
+    visibility: hidden;
+  }
+
+  @include when-min-width(lg) {
+    display: flex;
+    visibility: unset;
+  }
 
   &__menus {
     display: flex;
@@ -191,7 +410,7 @@ header.site-header::before {
     &__join {
       border-radius: 57px;
       padding: 10px 28px;
-      width: 203px;
+      max-width: 203px;
       height: 44px;
       background: $dark-blue;
 
@@ -200,6 +419,18 @@ header.site-header::before {
       font-size: 16px;
       line-height: 150%;
       color: $color-00;
+
+      @include when-min-width(md) {
+        &::before {
+          content: "Join";
+        }
+      }
+
+      @include when-min-width(mdl) {
+        &::before {
+          content: "Join the community";
+        }
+      }
 
       &:hover {
         cursor: pointer;
@@ -265,18 +496,34 @@ header.site-header::before {
 
 .site-section {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   max-width: 1440px;
-  margin: 0 auto;
+  margin: auto;
+  height: 100%;
+
+  @include when-min-width(xs) {
+    flex-direction: column;
+  }
+
+  @include when-min-width(lg) {
+    flex-direction: row;
+  }
 
   &__left {
-    max-width: 480px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     align-items: flex-start;
     justify-content: center;
+
+    @include when-min-width(xs) {
+      margin-top: 60px;
+    }
+
+    @include when-min-width(lg) {
+      margin-top: 24px;
+    }
 
     &__wrap {
       position: relative;
@@ -297,6 +544,15 @@ header.site-header::before {
         color: $dark-blue-80;
         position: relative;
         z-index: 1;
+
+        @include when-min-width(xs) {
+          font-size: 43px;
+          margin-top: 16px;
+        }
+
+        @include when-min-width(lg) {
+          font-size: 60px;
+        }
       }
     }
 
@@ -307,6 +563,14 @@ header.site-header::before {
       line-height: 130%;
       text-transform: capitalize;
       color: $dark-blue-80;
+
+      @include when-min-width(xs) {
+        font-size: 28px;
+      }
+
+      @include when-min-width(lg) {
+        font-size: 46px;
+      }
     }
 
     p {
@@ -316,6 +580,14 @@ header.site-header::before {
       line-height: 150%;
       color: $color-80;
       margin-bottom: 24px;
+      text-align: justify;
+      @include when-min-width(xs) {
+        font-size: 12px;
+      }
+
+      @include when-min-width(lg) {
+        font-size: 16px;
+      }
     }
 
     &__actions {
@@ -358,10 +630,29 @@ header.site-header::before {
   }
 
   &__right {
-    img {
-      width: 45rem;
+    position: relative;
+    bottom: 0;
+
+    @include when-min-width(xs) {
+      position: absolute;
+      bottom: 0;
+    }
+
+    @include when-min-width(lg) {
       position: relative;
-      bottom: -110px;
+      bottom: 0;
+    }
+
+    img {
+      width: 46rem;
+
+      @include when-min-width(xs) {
+        width: 24rem;
+      }
+
+      @include when-min-width(lg) {
+        width: 46rem;
+      }
     }
   }
 }
