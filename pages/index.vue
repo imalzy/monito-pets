@@ -171,9 +171,9 @@ const blogs = ref(Blogs);
 <style lang="scss">
 @import "@/assets/scss/_colors.scss";
 @import "@/assets/scss/_fonts.scss";
-
+@import "@/assets/scss/_media_when_min_width";
 .product-section {
-  padding: 14px 80px;
+  padding: 2vh 24px;
   max-width: 1440px;
   margin: 0 auto;
 
@@ -234,23 +234,35 @@ const blogs = ref(Blogs);
 }
 .product-list {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-direction: row;
-  gap: 20px;
   flex-wrap: wrap;
   margin: 0px -10px;
 
   &__item {
-    border-radius: 12px;
-    padding: 8px 8px 0px 8px;
-    width: 280px;
-    height: 446px;
     list-style: none;
+    flex: 1 1 0%;
+    padding: 20px;
+    cursor: pointer;
+    max-width: 25%;
+    min-width: 25%;
+
+    @include when-min-width(xs) {
+      max-width: 100%;
+      min-width: 100%;
+    }
+
+    @include when-min-width(sm) {
+      max-width: 33.3%;
+      min-width: 33.3%;
+    }
+
+    @include when-min-width(mdl) {
+      max-width: 25%;
+      min-width: 25%;
+    }
   }
 }
 .banner {
-  padding: 28px 80px;
+  padding: 2vh 24px;
   max-width: 1440px;
   margin: 0 auto;
   .banner-section {
@@ -364,19 +376,29 @@ const blogs = ref(Blogs);
 
 .blog-list {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-direction: row;
-  gap: 20px;
   flex-wrap: wrap;
   margin: 0px -10px;
 
   &__item {
-    border-radius: 12px;
-    padding: 8px;
-    width: 380px;
-    height: 424px;
     list-style: none;
+    flex: 1 1 0%;
+    padding: 20px;
+    cursor: pointer;
+
+    @include when-min-width(xs) {
+      max-width: 100%;
+      min-width: 100%;
+    }
+
+    @include when-min-width(sm) {
+      max-width: 50%;
+      min-width: 50%;
+    }
+
+    @include when-min-width(mdl) {
+      max-width: 33.3%;
+      min-width: 33.3%;
+    }
   }
 }
 </style>

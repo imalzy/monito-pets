@@ -1,0 +1,21 @@
+$bp-ls: (
+    'xs': 320px,
+    'sm': 544px,
+    'md': 768px,
+    'lg': 960px,
+    // 'mdl': 1024px,
+    'mdl': 1080px,
+    'xl': 1280px,
+    'xxl': 1440px,
+);
+
+@mixin when-min-width($bp) {
+    @if map-has-key($bp-ls, $bp) {
+        $bp-v: map-get($bp-ls, $bp);
+        @media (min-width: $bp-v) {
+            @content;
+        }
+    } @else {
+        @warn 'Breakpoint: #{$bp} tidak ditemukan';
+    }
+}

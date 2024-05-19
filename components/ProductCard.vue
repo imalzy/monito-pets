@@ -65,7 +65,7 @@ defineProps({
     justify-content: center;
 
     border-radius: 10px;
-    max-width: 264px;
+    max-width: 100%;
     min-height: 264px;
     max-height: 264px;
     overflow: hidden;
@@ -93,7 +93,7 @@ defineProps({
       gap: 4px;
 
       width: 100%;
-      max-height: 90px;
+      min-height: 90px;
 
       &__font-700 {
         font-family: $SVN-Gilroy-Bold;

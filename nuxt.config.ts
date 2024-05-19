@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     "@/assets/scss/main.scss",
     "@/assets/scss/_colors.scss",
     "@/assets/scss/_fonts.scss",
+    "@/assets/scss/_media_when_min_width.scss"
   ],
 
   modules: ["@nuxt/image"],
