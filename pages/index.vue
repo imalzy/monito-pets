@@ -26,6 +26,17 @@ const blogs = ref(Blogs);
         </ProductCard>
       </li>
     </ul>
+
+    <div class="product-section__head">
+      <NuxtLink class="product-section__head__xsbtn">
+        View more
+        <img
+          class="chervron-right"
+          src="@/assets/img/chevron-up.svg"
+          alt="play-circle"
+        />
+      </NuxtLink>
+    </div>
   </section>
   <!-- BANNER 1 -->
   <div class="banner">
@@ -58,7 +69,7 @@ const blogs = ref(Blogs);
       </div>
     </div>
   </div>
-  <section class="product-section">
+  <section class="product-section mobile-hidden">
     <div class="product-section__head">
       <h5>
         <span> Hard to choose right products for your pets?</span> <br />Our
@@ -85,9 +96,20 @@ const blogs = ref(Blogs);
         </ProductCard>
       </li>
     </ul>
+
+    <div class="product-section__head">
+      <NuxtLink class="product-section__head__xsbtn">
+        View more
+        <img
+          class="chervron-right"
+          src="@/assets/img/chevron-up.svg"
+          alt="play-circle"
+        />
+      </NuxtLink>
+    </div>
   </section>
 
-  <section class="product-section">
+  <section class="product-section mobile-hidden">
     <div class="product-section__head">
       <h5><span> Proud to be part of</span> Pet Sellers</h5>
 
@@ -110,8 +132,19 @@ const blogs = ref(Blogs);
         <img :src="seller.thumbnail" :alt="seller.id" width="120" />
       </li>
     </ul>
+
+    <div class="product-section__head">
+      <NuxtLink class="product-section__head__xsbtn">
+        View more
+        <img
+          class="chervron-right"
+          src="@/assets/img/chevron-up.svg"
+          alt="play-circle"
+        />
+      </NuxtLink>
+    </div>
   </section>
-  <div class="banner">
+  <div class="banner mobile-hidden">
     <div class="banner-section banner-section--banner2">
       <div class="banner-section__content banner-section__content--second">
         <div class="banner-section__content__title">
@@ -163,6 +196,17 @@ const blogs = ref(Blogs);
         <BlogCard :blog="blog"> </BlogCard>
       </li>
     </ul>
+
+    <div class="product-section__head">
+      <NuxtLink class="product-section__head__xsbtn">
+        View more
+        <img
+          class="chervron-right"
+          src="@/assets/img/chevron-up.svg"
+          alt="play-circle"
+        />
+      </NuxtLink>
+    </div>
   </section>
 
   <Footer></Footer>
@@ -172,6 +216,18 @@ const blogs = ref(Blogs);
 @import "@/assets/scss/_colors.scss";
 @import "@/assets/scss/_fonts.scss";
 @import "@/assets/scss/_media_when_min_width";
+
+.mobile-hidden {
+  @include when-min-width(xs) {
+    display: none;
+    visibility: hidden;
+  }
+  @include when-min-width(md) {
+    display: block;
+    visibility: unset;
+  }
+}
+
 .product-section {
   padding: 2vh 24px;
   max-width: 1440px;
@@ -203,6 +259,13 @@ const blogs = ref(Blogs);
       line-height: 150%;
       text-transform: capitalize;
       color: $dark-blue;
+
+      @include when-min-width(xs) {
+        font-size: 20px;
+      }
+      @include when-min-width(lg) {
+        font-size: 24px;
+      }
     }
 
     span {
@@ -211,6 +274,36 @@ const blogs = ref(Blogs);
       font-size: 16px;
       line-height: 150%;
       color: #000;
+
+      @include when-min-width(xs) {
+        font-size: 14px;
+      }
+      @include when-min-width(lg) {
+        font-size: 16px;
+      }
+    }
+
+    &__xsbtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border: 1.5px solid $dark-blue;
+      border-radius: 57px;
+      padding: 12px 28px;
+      width: 100%;
+      height: 44px;
+
+      font-family: $SVN-Gilroy-Light;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 143%;
+      color: $dark-blue;
+
+      @include when-min-width(sm) {
+        display: none;
+        visibility: hidden;
+      }
     }
 
     &__btn {
@@ -229,6 +322,16 @@ const blogs = ref(Blogs);
       font-size: 14px;
       line-height: 143%;
       color: $dark-blue;
+
+      @include when-min-width(xs) {
+        display: none;
+        visibility: hidden;
+      }
+
+      @include when-min-width(sm) {
+        display: flex;
+        visibility: unset;
+      }
     }
   }
 }
@@ -265,6 +368,7 @@ const blogs = ref(Blogs);
   padding: 2vh 24px;
   max-width: 1440px;
   margin: 0 auto;
+
   .banner-section {
     border-radius: 20px;
     padding: 60px;
@@ -272,6 +376,16 @@ const blogs = ref(Blogs);
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0 auto;
+
+    @include when-min-width(xs) {
+      height: 640px;
+      padding: 16px;
+    }
+
+    @include when-min-width(lg) {
+      padding: 60px;
+      height: 378px;
+    }
 
     &__content {
       flex: 1 1 50%;
@@ -300,6 +414,14 @@ const blogs = ref(Blogs);
         font-size: 52px;
         text-transform: capitalize;
         color: $dark-blue;
+
+        @include when-min-width(xs) {
+          font-size: 36px;
+        }
+
+        @include when-min-width(lg) {
+          font-size: 52px;
+        }
       }
 
       h5 {
@@ -314,7 +436,7 @@ const blogs = ref(Blogs);
         font-family: $SVN-Gilroy-Light;
         font-weight: 500;
         font-size: 12px;
-        text-align: right;
+        text-align: left;
         color: $color-80;
       }
     }
@@ -325,6 +447,22 @@ const blogs = ref(Blogs);
       gap: 100px;
       align-items: center;
       justify-content: space-between;
+
+      @include when-min-width(xs) {
+        background-image: url(@/assets/img/illustration/Banner-xs.png);
+        flex-direction: column-reverse;
+        background-position: center;
+      }
+
+      @include when-min-width(lg) {
+        background-image: url(@/assets/img/illustration/Banner.jpg);
+        background-size: cover;
+        display: flex;
+        gap: 100px;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
     &--banner2 {
       background-image: url(@/assets/img/illustration/Banner2.jpg);
